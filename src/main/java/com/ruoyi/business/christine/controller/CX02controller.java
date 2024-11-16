@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.ruoyi.business.christine.domain.CX02;
 import com.ruoyi.business.christine.domain.CX02VO;
 import com.ruoyi.business.christine.mapper.CX02Mapper;
-import com.ruoyi.business.demo.domain.TestReportCB09;
+import com.ruoyi.business.christine.service.CX02Service;
 import com.ruoyi.common.constant.HttpStatus;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
@@ -25,11 +25,11 @@ import java.util.Map;
 public class CX02controller {
     @Autowired
     private CX02Mapper cx02Mapper;
-
+    private CX02Service cx02Service;
 
     @GetMapping("/get/{id}")
     public AjaxResult get(@PathVariable Long id) {
-        cx02Mapper.deleteByPrimaryKey(id);
+        //cx02Mapper.selectByPrimaryKey(id);
         return AjaxResult.success();
     }
     @PostMapping("/insert")
@@ -47,8 +47,8 @@ public class CX02controller {
         if(cx02.getErrorsMap().size()>0){
             return new AjaxResult(HttpStatus.VALID_ERROR, "表单校验失败！", cx02.getErrorsMap());
         }
-
-//    cx12Mapper.insert(cx12);
+        cx02.setUserid(SecurityUtils.getUserId());
+        cx02Mapper.insert(cx02);
         return AjaxResult.success(result.getAllErrors());
 
     }
@@ -58,12 +58,8 @@ public class CX02controller {
             cx02.getErrorsMap().put("v1_rltrjdz","ΡT不能为0");
             return cx02;
         }
-        if(0.0f == cx02.getP1_djmddz()){
-            cx02.getErrorsMap().put("p1_djmddz","v不能为0");
-            return cx02;
-        }
-        if(0.0f == cx02.getV_pjz1()){
-            cx02.getErrorsMap().put("V_pjz1","不能为0");
+        if(0.0f == cx02.getΡsha()){
+            cx02.getErrorsMap().put("Ρsha","Ρsha不能为0");
             return cx02;
         }
 
@@ -78,7 +74,7 @@ public class CX02controller {
         cx02.setP_pjz1((cx02.getP1_djmddz()+cx02.getP2_djmddz())/2);
 
         cx02.setK(((1-cx02.getP_pjz1())/ cx02.getΡsha())*100);
-//应为m4
+
         cx02.setY1_jzmddz((cx02.getM4_rlthjzsdzzl()-cx02.getMo())/cx02.getV_pjz1());
         cx02.setY2_jzmddz((cx02.getM4_2_rlthjzsdzzl()-cx02.getMo())/cx02.getV_pjz1());
 
@@ -102,6 +98,10 @@ public AjaxResult update(@RequestBody CX02 cx02, BindingResult result){
             map.put(err.getField(),beforeErrorInfo+err.getDefaultMessage());
         }
         return new AjaxResult(HttpStatus.VALID_ERROR,"表单校验失败！",map);
+    }
+    cx02=compute(cx02);
+    if(cx02.getErrorsMap().size()>0){
+        return new AjaxResult(HttpStatus.VALID_ERROR, "表单校验失败！", cx02.getErrorsMap());
     }
     cx02.setUserid(SecurityUtils.getUserId());
     cx02Mapper.updateByPrimaryKey(cx02);
