@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.demo.mapper.Jc41ItemMapper">
+  <resultMap id="BaseResultMap" type="com.ruoyi.business.demo.domain.Jc41Item">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sczbjcg_x" jdbcType="VARCHAR" property="sczbjcgX" />
+    <result column="sczbjcg_y" jdbcType="VARCHAR" property="sczbjcgY" />
+    <result column="sczbjcg_h" jdbcType="VARCHAR" property="sczbjcgH" />
+    <result column="jszh" jdbcType="VARCHAR" property="jszh" />
+    <result column="dmyxsjzbjcg_x0" jdbcType="DECIMAL" property="dmyxsjzbjcgX0" />
+    <result column="dmyxsjzbjcg_y0" jdbcType="DECIMAL" property="dmyxsjzbjcgY0" />
+    <result column="dmyxsjzbjcg_h0" jdbcType="DECIMAL" property="dmyxsjzbjcgH0" />
+    <result column="jsscbj" jdbcType="DECIMAL" property="jsscbj" />
+    <result column="sjbj" jdbcType="DECIMAL" property="sjbj" />
+    <result column="cqz" jdbcType="INTEGER" property="cqz" />
+    <result column="jc41_id" jdbcType="BIGINT" property="jc41Id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="upate_time" jdbcType="TIMESTAMP" property="upateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    `id`, `sczbjcg_x`, `sczbjcg_y`, `sczbjcg_h`, `jszh`, `dmyxsjzbjcg_x0`, `dmyxsjzbjcg_y0`,
+    `dmyxsjzbjcg_h0`, `jsscbj`, `sjbj`, `cqz`, `jc41_id`, `create_time`, `upate_time`
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from jc41_item
+    where `id` = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from jc41_item
+    where `id` = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ruoyi.business.demo.domain.Jc41Item">
+    insert into jc41_item (`id`, `sczbjcg_x`, `sczbjcg_y`,
+      `sczbjcg_h`, `jszh`, `dmyxsjzbjcg_x0`, 
+      `dmyxsjzbjcg_y0`, `dmyxsjzbjcg_h0`, `jsscbj`, 
+      `sjbj`, `cqz`, `jc41_id`, `create_time`,
+      `upate_time`)
+    values (#{id,jdbcType=BIGINT}, #{sczbjcgX,jdbcType=VARCHAR}, #{sczbjcgY,jdbcType=VARCHAR}, 
+      #{sczbjcgH,jdbcType=VARCHAR}, #{jszh,jdbcType=VARCHAR}, #{dmyxsjzbjcgX0,jdbcType=DECIMAL}, 
+      #{dmyxsjzbjcgY0,jdbcType=DECIMAL}, #{dmyxsjzbjcgH0,jdbcType=DECIMAL}, #{jsscbj,jdbcType=DECIMAL}, 
+      #{sjbj,jdbcType=DECIMAL}, #{cqz,jdbcType=INTEGER}, #{jc41Id,jdbcType=BIGINT}, now(),
+      null)
+  </insert>
+  <insert id="insertSelective" parameterType="com.ruoyi.business.demo.domain.Jc41Item">
+    insert into jc41_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        `id`,
+      </if>
+      <if test="sczbjcgX != null">
+        `sczbjcg_x`,
+      </if>
+      <if test="sczbjcgY != null">
+        `sczbjcg_y`,
+      </if>
+      <if test="sczbjcgH != null">
+        `sczbjcg_h`,
+      </if>
+      <if test="jszh != null">
+        `jszh`,
+      </if>
+      <if test="dmyxsjzbjcgX0 != null">
+        `dmyxsjzbjcg_x0`,
+      </if>
+      <if test="dmyxsjzbjcgY0 != null">
+        `dmyxsjzbjcg_y0`,
+      </if>
+      <if test="dmyxsjzbjcgH0 != null">
+        `dmyxsjzbjcg_h0`,
+      </if>
+      <if test="jsscbj != null">
+        `jsscbj`,
+      </if>
+      <if test="sjbj != null">
+        `sjbj`,
+      </if>
+      <if test="cqz != null">
+        `cqz`,
+      </if>
+      <if test="jc41Id != null">
+        `jc41_id`,
+      </if>
+      <if test="createTime != null">
+        `create_time`,
+      </if>
+      <if test="upateTime != null">
+        `upate_time`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sczbjcgX != null">
+        #{sczbjcgX,jdbcType=VARCHAR},
+      </if>
+      <if test="sczbjcgY != null">
+        #{sczbjcgY,jdbcType=VARCHAR},
+      </if>
+      <if test="sczbjcgH != null">
+        #{sczbjcgH,jdbcType=VARCHAR},
+      </if>
+      <if test="jszh != null">
+        #{jszh,jdbcType=VARCHAR},
+      </if>
+      <if test="dmyxsjzbjcgX0 != null">
+        #{dmyxsjzbjcgX0,jdbcType=DECIMAL},
+      </if>
+      <if test="dmyxsjzbjcgY0 != null">
+        #{dmyxsjzbjcgY0,jdbcType=DECIMAL},
+      </if>
+      <if test="dmyxsjzbjcgH0 != null">
+        #{dmyxsjzbjcgH0,jdbcType=DECIMAL},
+      </if>
+      <if test="jsscbj != null">
+        #{jsscbj,jdbcType=DECIMAL},
+      </if>
+      <if test="sjbj != null">
+        #{sjbj,jdbcType=DECIMAL},
+      </if>
+      <if test="cqz != null">
+        #{cqz,jdbcType=INTEGER},
+      </if>
+      <if test="jc41Id != null">
+        #{jc41Id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upateTime != null">
+        #{upateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ruoyi.business.demo.domain.Jc41Item">
+    update jc41_item
+    <set>
+      <if test="sczbjcgX != null">
+        `sczbjcg_x` = #{sczbjcgX,jdbcType=VARCHAR},
+      </if>
+      <if test="sczbjcgY != null">
+        `sczbjcg_y` = #{sczbjcgY,jdbcType=VARCHAR},
+      </if>
+      <if test="sczbjcgH != null">
+        `sczbjcg_h` = #{sczbjcgH,jdbcType=VARCHAR},
+      </if>
+      <if test="jszh != null">
+        `jszh` = #{jszh,jdbcType=VARCHAR},
+      </if>
+      <if test="dmyxsjzbjcgX0 != null">
+        `dmyxsjzbjcg_x0` = #{dmyxsjzbjcgX0,jdbcType=DECIMAL},
+      </if>
+      <if test="dmyxsjzbjcgY0 != null">
+        `dmyxsjzbjcg_y0` = #{dmyxsjzbjcgY0,jdbcType=DECIMAL},
+      </if>
+      <if test="dmyxsjzbjcgH0 != null">
+        `dmyxsjzbjcg_h0` = #{dmyxsjzbjcgH0,jdbcType=DECIMAL},
+      </if>
+      <if test="jsscbj != null">
+        `jsscbj` = #{jsscbj,jdbcType=DECIMAL},
+      </if>
+      <if test="sjbj != null">
+        `sjbj` = #{sjbj,jdbcType=DECIMAL},
+      </if>
+      <if test="cqz != null">
+        `cqz` = #{cqz,jdbcType=INTEGER},
+      </if>
+      <if test="jc41Id != null">
+        `jc41_id` = #{jc41Id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        `create_time` = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upateTime != null">
+        `upate_time` = #{upateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where `id` = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateById" parameterType="com.ruoyi.business.demo.domain.Jc41Item">
+    update jc41_item
+    set `sczbjcg_x` = #{sczbjcgX,jdbcType=VARCHAR},
+      `sczbjcg_y` = #{sczbjcgY,jdbcType=VARCHAR},
+      `sczbjcg_h` = #{sczbjcgH,jdbcType=VARCHAR},
+      `jszh` = #{jszh,jdbcType=VARCHAR},
+      `dmyxsjzbjcg_x0` = #{dmyxsjzbjcgX0,jdbcType=DECIMAL},
+      `dmyxsjzbjcg_y0` = #{dmyxsjzbjcgY0,jdbcType=DECIMAL},
+      `dmyxsjzbjcg_h0` = #{dmyxsjzbjcgH0,jdbcType=DECIMAL},
+      `jsscbj` = #{jsscbj,jdbcType=DECIMAL},
+      `sjbj` = #{sjbj,jdbcType=DECIMAL},
+      `cqz` = #{cqz,jdbcType=INTEGER},
+      `jc41_id` = #{jc41Id,jdbcType=BIGINT},
+      `upate_time` = now()
+    where `id` = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

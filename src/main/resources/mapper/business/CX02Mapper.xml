@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.christine.mapper.CX02Mapper">
+  <resultMap id="BaseResultMap" type="com.ruoyi.business.christine.domain.CX02">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="jcdwmc" jdbcType="VARCHAR" property="jcdwmc" />
+    <result column="jlbh" jdbcType="VARCHAR" property="jlbh" />
+    <result column="gcmc" jdbcType="VARCHAR" property="gcmc" />
+    <result column="htd" jdbcType="VARCHAR" property="htd" />
+    <result column="sgdw" jdbcType="VARCHAR" property="sgdw" />
+    <result column="jldw" jdbcType="VARCHAR" property="jldw" />
+    <result column="gcbw_yt" jdbcType="VARCHAR" property="gcbw_yt" />
+    <result column="ypxx" jdbcType="VARCHAR" property="ypxx" />
+    <result column="syjcrq" jdbcType="DATE" property="syjcrq" />
+    <result column="sytj" jdbcType="VARCHAR" property="sytj" />
+    <result column="jcyj" jdbcType="VARCHAR" property="jcyj" />
+    <result column="pdyj" jdbcType="VARCHAR" property="pdyj" />
+    <result column="zyyqsbmcjbh" jdbcType="VARCHAR" property="zyyqsbmcjbh" />
+    <result column="qydd" jdbcType="VARCHAR" property="qydd" />
+    <result column="qyrq" jdbcType="DATE" property="qyrq" />
+    <result column="dbsl" jdbcType="REAL" property="dbsl" />
+    <result column="jlcd" jdbcType="VARCHAR" property="jlcd" />
+    <result column="pzgg" jdbcType="VARCHAR" property="pzgg" />
+    <result column="m1_rlthblbzzl" jdbcType="REAL" property="m1_rlthblbzzl" />
+    <result column="m1_2_rlthblbzzl" jdbcType="REAL" property="m1_2_rlthblbzzl" />
+    <result column="m3_rltblbhszzl" jdbcType="REAL" property="m3_rltblbhszzl" />
+    <result column="m3_2_rltblbhszzl" jdbcType="REAL" property="m3_2_rltblbhszzl" />
+    <result column="v1_rltrjdz" jdbcType="REAL" property="v1_rltrjdz" />
+    <result column="v2_rltrjdz" jdbcType="REAL" property="v2_rltrjdz" />
+    <result column="v_pjz1" jdbcType="REAL" property="v_pjz1" />
+    <result column="v_pjz2" jdbcType="REAL" property="v_pjz2" />
+    <result column="ρT" jdbcType="REAL" property="ρT" />
+    <result column="ρsha" jdbcType="REAL" property="ρsha" />
+    <result column="mo" jdbcType="REAL" property="mo" />
+    <result column="m2_rlthdjsdzzl" jdbcType="REAL" property="m2_rlthdjsdzzl" />
+    <result column="m2_2_rlthdjsdzzl" jdbcType="REAL" property="m2_2_rlthdjsdzzl" />
+    <result column="p1_djmddz" jdbcType="REAL" property="p1_djmddz" />
+    <result column="p2_djmddz" jdbcType="REAL" property="p2_djmddz" />
+    <result column="p_pjz1" jdbcType="REAL" property="p_pjz1" />
+    <result column="p_pjz2" jdbcType="REAL" property="p_pjz2" />
+    <result column="k" jdbcType="REAL" property="k" />
+    <result column="p4_rlthjzsdzzl" jdbcType="REAL" property="m4_rlthjzsdzzl" />
+    <result column="p4_2_rlthjzsdzzl" jdbcType="REAL" property="m4_2_rlthjzsdzzl" />
+    <result column="y1_jzmddz" jdbcType="REAL" property="y1_jzmddz" />
+    <result column="y2_jzmddz" jdbcType="REAL" property="y2_jzmddz" />
+    <result column="y_pjz1" jdbcType="REAL" property="y_pjz1" />
+    <result column="y_pjz2" jdbcType="REAL" property="y_pjz2" />
+    <result column="t" jdbcType="REAL" property="t" />
+    <result column="fjsm" jdbcType="VARCHAR" property="fjsm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, time, position, userid, jcdwmc, jlbh, gcmc, htd, sgdw, jldw, gcbw_yt, ypxx, syjcrq, 
+    sytj, jcyj, pdyj, zyyqsbmcjbh, qydd, qyrq, dbsl, jlcd, pzgg, m1_rlthblbzzl, m1_2_rlthblbzzl, 
+    m3_rltblbhszzl, m3_2_rltblbhszzl, v1_rltrjdz, v2_rltrjdz, v_pjz1, v_pjz2, ρT, ρsha, 
+    mo, m2_rlthdjsdzzl, m2_2_rlthdjsdzzl, p1_djmddz, p2_djmddz, p_pjz1, p_pjz2, k, p4_rlthjzsdzzl, 
+    p4_2_rlthjzsdzzl, y1_jzmddz, y2_jzmddz, y_pjz1, y_pjz2, t, fjsm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cx02
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectListByVo" resultType="com.ruoyi.business.christine.domain.CX02">
+    select * from  cx02
+    <where>
+      <if test="jcdwmc != null and jcdwmc != ''">
+        and jcdwmc like CONCAT("%",#{jcdwmc}, "%")
+      </if>
+      <if test="gcmc != null and gcmc != ''">
+        and gcmc like CONCAT("%",#{gcmc}, "%")
+      </if>
+      <if test="jlbh != null and jlbh != ''">
+        and jlbh like CONCAT("%",#{jlbh}, "%")
+      </if>
+      <if test="htd != null and htd != ''">
+        and htd like CONCAT("%",#{htd}, "%")
+      </if>
+      <if test="sgdw != null and sgdw != ''">
+        and sgdw like CONCAT("%",#{sgdw}, "%")
+      </if>
+      <if test="username != null and username != ''">
+        and  username like CONCAT("%",#{ username}, "%")
+      </if>
+      <if test="position != null and position != ''">
+        and position like CONCAT("%",#{position}, "%")
+      </if>
+      <if test="jldw != null and jldw != ''">
+        and jldw like CONCAT("%",#{jldw}, "%")
+      </if>
+      <if test="gcbw_yt != null and gcbw_yt != ''">
+        and gcbw_yt like CONCAT("%",#{gcbw_yt}, "%")
+      </if>
+      <if test="ypxx != null and ypxx != ''">
+        and ypxx like CONCAT("%",#{ypxx}, "%")
+      </if>
+      <if test="sytj != null and sytj != ''">
+        and sytj like CONCAT("%",#{sytj}, "%")
+      </if>
+      <if test="jcyj != null and jcyj != ''">
+        and jcyj like CONCAT("%",#{jcyj}, "%")
+      </if>
+      <if test="pdyj != null and pdyj != ''">
+        and pdyj like CONCAT("%",#{pdyj}, "%")
+      </if>
+      <if test="zyyqsbmcjbh != null and zyyqsbmcjbh != ''">
+        and zyyqsbmcjbh like CONCAT("%",#{zyyqsbmcjbh}, "%")
+      </if>
+      <if test="qydd != null and qydd != ''">
+        and qydd like CONCAT("%",#{qydd}, "%")
+      </if>
+      <if test="jlcd != null and jlcd != ''">
+        and jlcd like CONCAT("%",#{jlcd}, "%")
+      </if>
+      <if test="pzgg != null and pzgg != ''">
+        and pzgg like CONCAT("%",#{pzgg}, "%")
+      </if>
+    </where>
+    order by id
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cx02
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ruoyi.business.christine.domain.CX02">
+    insert into cx02 (id, time, position, 
+      userid, jcdwmc, jlbh, 
+      gcmc, htd, sgdw, jldw, 
+      gcbw_yt, ypxx, syjcrq, 
+      sytj, jcyj, pdyj, zyyqsbmcjbh, 
+      qydd, qyrq, dbsl, jlcd, 
+      pzgg, m1_rlthblbzzl, m1_2_rlthblbzzl, 
+      m3_rltblbhszzl, m3_2_rltblbhszzl, v1_rltrjdz, 
+      v2_rltrjdz, v_pjz1, v_pjz2, 
+      ρT, ρsha, mo, m2_rlthdjsdzzl, 
+      m2_2_rlthdjsdzzl, p1_djmddz, p2_djmddz, 
+      p_pjz1, p_pjz2, k, p4_rlthjzsdzzl, 
+      p4_2_rlthjzsdzzl, y1_jzmddz, y2_jzmddz, 
+      y_pjz1, y_pjz2, t, fjsm
+      )
+    values (#{id,jdbcType=BIGINT}, #{time,jdbcType=TIMESTAMP}, #{position,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=BIGINT}, #{jcdwmc,jdbcType=VARCHAR}, #{jlbh,jdbcType=VARCHAR}, 
+      #{gcmc,jdbcType=VARCHAR}, #{htd,jdbcType=VARCHAR}, #{sgdw,jdbcType=VARCHAR}, #{jldw,jdbcType=VARCHAR}, 
+      #{gcbw_yt,jdbcType=VARCHAR}, #{ypxx,jdbcType=VARCHAR}, #{syjcrq,jdbcType=DATE}, 
+      #{sytj,jdbcType=VARCHAR}, #{jcyj,jdbcType=VARCHAR}, #{pdyj,jdbcType=VARCHAR}, #{zyyqsbmcjbh,jdbcType=VARCHAR}, 
+      #{qydd,jdbcType=VARCHAR}, #{qyrq,jdbcType=DATE}, #{dbsl,jdbcType=REAL}, #{jlcd,jdbcType=VARCHAR}, 
+      #{pzgg,jdbcType=VARCHAR}, #{m1_rlthblbzzl,jdbcType=REAL}, #{m1_2_rlthblbzzl,jdbcType=REAL}, 
+      #{m3_rltblbhszzl,jdbcType=REAL}, #{m3_2_rltblbhszzl,jdbcType=REAL}, #{v1_rltrjdz,jdbcType=REAL}, 
+      #{v2_rltrjdz,jdbcType=REAL}, #{v_pjz1,jdbcType=REAL}, #{v_pjz2,jdbcType=REAL}, 
+      #{ρT,jdbcType=REAL}, #{ρsha,jdbcType=REAL}, #{mo,jdbcType=REAL}, #{m2_rlthdjsdzzl,jdbcType=REAL}, 
+      #{m2_2_rlthdjsdzzl,jdbcType=REAL}, #{p1_djmddz,jdbcType=REAL}, #{p2_djmddz,jdbcType=REAL}, 
+      #{p_pjz1,jdbcType=REAL}, #{p_pjz2,jdbcType=REAL}, #{k,jdbcType=REAL}, #{p4_rlthjzsdzzl,jdbcType=REAL}, 
+      #{p4_2_rlthjzsdzzl,jdbcType=REAL}, #{y1_jzmddz,jdbcType=REAL}, #{y2_jzmddz,jdbcType=REAL}, 
+      #{y_pjz1,jdbcType=REAL}, #{y_pjz2,jdbcType=REAL}, #{t,jdbcType=REAL}, #{fjsm,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ruoyi.business.christine.domain.CX02">
+    insert into cx02
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="jcdwmc != null">
+        jcdwmc,
+      </if>
+      <if test="jlbh != null">
+        jlbh,
+      </if>
+      <if test="gcmc != null">
+        gcmc,
+      </if>
+      <if test="htd != null">
+        htd,
+      </if>
+      <if test="sgdw != null">
+        sgdw,
+      </if>
+      <if test="jldw != null">
+        jldw,
+      </if>
+      <if test="gcbw_yt != null">
+        gcbw_yt,
+      </if>
+      <if test="ypxx != null">
+        ypxx,
+      </if>
+      <if test="syjcrq != null">
+        syjcrq,
+      </if>
+      <if test="sytj != null">
+        sytj,
+      </if>
+      <if test="jcyj != null">
+        jcyj,
+      </if>
+      <if test="pdyj != null">
+        pdyj,
+      </if>
+      <if test="zyyqsbmcjbh != null">
+        zyyqsbmcjbh,
+      </if>
+      <if test="qydd != null">
+        qydd,
+      </if>
+      <if test="qyrq != null">
+        qyrq,
+      </if>
+      <if test="dbsl != null">
+        dbsl,
+      </if>
+      <if test="jlcd != null">
+        jlcd,
+      </if>
+      <if test="pzgg != null">
+        pzgg,
+      </if>
+      <if test="m1_rlthblbzzl != null">
+        m1_rlthblbzzl,
+      </if>
+      <if test="m1_2_rlthblbzzl != null">
+        m1_2_rlthblbzzl,
+      </if>
+      <if test="m3_rltblbhszzl != null">
+        m3_rltblbhszzl,
+      </if>
+      <if test="m3_2_rltblbhszzl != null">
+        m3_2_rltblbhszzl,
+      </if>
+      <if test="v1_rltrjdz != null">
+        v1_rltrjdz,
+      </if>
+      <if test="v2_rltrjdz != null">
+        v2_rltrjdz,
+      </if>
+      <if test="v_pjz1 != null">
+        v_pjz1,
+      </if>
+      <if test="v_pjz2 != null">
+        v_pjz2,
+      </if>
+      <if test="ρT != null">
+        ρT,
+      </if>
+      <if test="ρsha != null">
+        ρsha,
+      </if>
+      <if test="mo != null">
+        mo,
+      </if>
+      <if test="m2_rlthdjsdzzl != null">
+        m2_rlthdjsdzzl,
+      </if>
+      <if test="m2_2_rlthdjsdzzl != null">
+        m2_2_rlthdjsdzzl,
+      </if>
+      <if test="p1_djmddz != null">
+        p1_djmddz,
+      </if>
+      <if test="p2_djmddz != null">
+        p2_djmddz,
+      </if>
+      <if test="p_pjz1 != null">
+        p_pjz1,
+      </if>
+      <if test="p_pjz2 != null">
+        p_pjz2,
+      </if>
+      <if test="k != null">
+        k,
+      </if>
+      <if test="p4_rlthjzsdzzl != null">
+        p4_rlthjzsdzzl,
+      </if>
+      <if test="p4_2_rlthjzsdzzl != null">
+        p4_2_rlthjzsdzzl,
+      </if>
+      <if test="y1_jzmddz != null">
+        y1_jzmddz,
+      </if>
+      <if test="y2_jzmddz != null">
+        y2_jzmddz,
+      </if>
+      <if test="y_pjz1 != null">
+        y_pjz1,
+      </if>
+      <if test="y_pjz2 != null">
+        y_pjz2,
+      </if>
+      <if test="t != null">
+        t,
+      </if>
+      <if test="fjsm != null">
+        fjsm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="jcdwmc != null">
+        #{jcdwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jlbh != null">
+        #{jlbh,jdbcType=VARCHAR},
+      </if>
+      <if test="gcmc != null">
+        #{gcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="htd != null">
+        #{htd,jdbcType=VARCHAR},
+      </if>
+      <if test="sgdw != null">
+        #{sgdw,jdbcType=VARCHAR},
+      </if>
+      <if test="jldw != null">
+        #{jldw,jdbcType=VARCHAR},
+      </if>
+      <if test="gcbw_yt != null">
+        #{gcbw_yt,jdbcType=VARCHAR},
+      </if>
+      <if test="ypxx != null">
+        #{ypxx,jdbcType=VARCHAR},
+      </if>
+      <if test="syjcrq != null">
+        #{syjcrq,jdbcType=DATE},
+      </if>
+      <if test="sytj != null">
+        #{sytj,jdbcType=VARCHAR},
+      </if>
+      <if test="jcyj != null">
+        #{jcyj,jdbcType=VARCHAR},
+      </if>
+      <if test="pdyj != null">
+        #{pdyj,jdbcType=VARCHAR},
+      </if>
+      <if test="zyyqsbmcjbh != null">
+        #{zyyqsbmcjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="qydd != null">
+        #{qydd,jdbcType=VARCHAR},
+      </if>
+      <if test="qyrq != null">
+        #{qyrq,jdbcType=DATE},
+      </if>
+      <if test="dbsl != null">
+        #{dbsl,jdbcType=REAL},
+      </if>
+      <if test="jlcd != null">
+        #{jlcd,jdbcType=VARCHAR},
+      </if>
+      <if test="pzgg != null">
+        #{pzgg,jdbcType=VARCHAR},
+      </if>
+      <if test="m1_rlthblbzzl != null">
+        #{m1_rlthblbzzl,jdbcType=REAL},
+      </if>
+      <if test="m1_2_rlthblbzzl != null">
+        #{m1_2_rlthblbzzl,jdbcType=REAL},
+      </if>
+      <if test="m3_rltblbhszzl != null">
+        #{m3_rltblbhszzl,jdbcType=REAL},
+      </if>
+      <if test="m3_2_rltblbhszzl != null">
+        #{m3_2_rltblbhszzl,jdbcType=REAL},
+      </if>
+      <if test="v1_rltrjdz != null">
+        #{v1_rltrjdz,jdbcType=REAL},
+      </if>
+      <if test="v2_rltrjdz != null">
+        #{v2_rltrjdz,jdbcType=REAL},
+      </if>
+      <if test="v_pjz1 != null">
+        #{v_pjz1,jdbcType=REAL},
+      </if>
+      <if test="v_pjz2 != null">
+        #{v_pjz2,jdbcType=REAL},
+      </if>
+      <if test="ρT != null">
+        #{ρT,jdbcType=REAL},
+      </if>
+      <if test="ρsha != null">
+        #{ρsha,jdbcType=REAL},
+      </if>
+      <if test="mo != null">
+        #{mo,jdbcType=REAL},
+      </if>
+      <if test="m2_rlthdjsdzzl != null">
+        #{m2_rlthdjsdzzl,jdbcType=REAL},
+      </if>
+      <if test="m2_2_rlthdjsdzzl != null">
+        #{m2_2_rlthdjsdzzl,jdbcType=REAL},
+      </if>
+      <if test="p1_djmddz != null">
+        #{p1_djmddz,jdbcType=REAL},
+      </if>
+      <if test="p2_djmddz != null">
+        #{p2_djmddz,jdbcType=REAL},
+      </if>
+      <if test="p_pjz1 != null">
+        #{p_pjz1,jdbcType=REAL},
+      </if>
+      <if test="p_pjz2 != null">
+        #{p_pjz2,jdbcType=REAL},
+      </if>
+      <if test="k != null">
+        #{k,jdbcType=REAL},
+      </if>
+      <if test="p4_rlthjzsdzzl != null">
+        #{p4_rlthjzsdzzl,jdbcType=REAL},
+      </if>
+      <if test="p4_2_rlthjzsdzzl != null">
+        #{p4_2_rlthjzsdzzl,jdbcType=REAL},
+      </if>
+      <if test="y1_jzmddz != null">
+        #{y1_jzmddz,jdbcType=REAL},
+      </if>
+      <if test="y2_jzmddz != null">
+        #{y2_jzmddz,jdbcType=REAL},
+      </if>
+      <if test="y_pjz1 != null">
+        #{y_pjz1,jdbcType=REAL},
+      </if>
+      <if test="y_pjz2 != null">
+        #{y_pjz2,jdbcType=REAL},
+      </if>
+      <if test="t != null">
+        #{t,jdbcType=REAL},
+      </if>
+      <if test="fjsm != null">
+        #{fjsm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ruoyi.business.christine.domain.CX02">
+    update cx02
+    <set>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="jcdwmc != null">
+        jcdwmc = #{jcdwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jlbh != null">
+        jlbh = #{jlbh,jdbcType=VARCHAR},
+      </if>
+      <if test="gcmc != null">
+        gcmc = #{gcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="htd != null">
+        htd = #{htd,jdbcType=VARCHAR},
+      </if>
+      <if test="sgdw != null">
+        sgdw = #{sgdw,jdbcType=VARCHAR},
+      </if>
+      <if test="jldw != null">
+        jldw = #{jldw,jdbcType=VARCHAR},
+      </if>
+      <if test="gcbw_yt != null">
+        gcbw_yt = #{gcbw_yt,jdbcType=VARCHAR},
+      </if>
+      <if test="ypxx != null">
+        ypxx = #{ypxx,jdbcType=VARCHAR},
+      </if>
+      <if test="syjcrq != null">
+        syjcrq = #{syjcrq,jdbcType=DATE},
+      </if>
+      <if test="sytj != null">
+        sytj = #{sytj,jdbcType=VARCHAR},
+      </if>
+      <if test="jcyj != null">
+        jcyj = #{jcyj,jdbcType=VARCHAR},
+      </if>
+      <if test="pdyj != null">
+        pdyj = #{pdyj,jdbcType=VARCHAR},
+      </if>
+      <if test="zyyqsbmcjbh != null">
+        zyyqsbmcjbh = #{zyyqsbmcjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="qydd != null">
+        qydd = #{qydd,jdbcType=VARCHAR},
+      </if>
+      <if test="qyrq != null">
+        qyrq = #{qyrq,jdbcType=DATE},
+      </if>
+      <if test="dbsl != null">
+        dbsl = #{dbsl,jdbcType=REAL},
+      </if>
+      <if test="jlcd != null">
+        jlcd = #{jlcd,jdbcType=VARCHAR},
+      </if>
+      <if test="pzgg != null">
+        pzgg = #{pzgg,jdbcType=VARCHAR},
+      </if>
+      <if test="m1_rlthblbzzl != null">
+        m1_rlthblbzzl = #{m1_rlthblbzzl,jdbcType=REAL},
+      </if>
+      <if test="m1_2_rlthblbzzl != null">
+        m1_2_rlthblbzzl = #{m1_2_rlthblbzzl,jdbcType=REAL},
+      </if>
+      <if test="m3_rltblbhszzl != null">
+        m3_rltblbhszzl = #{m3_rltblbhszzl,jdbcType=REAL},
+      </if>
+      <if test="m3_2_rltblbhszzl != null">
+        m3_2_rltblbhszzl = #{m3_2_rltblbhszzl,jdbcType=REAL},
+      </if>
+      <if test="v1_rltrjdz != null">
+        v1_rltrjdz = #{v1_rltrjdz,jdbcType=REAL},
+      </if>
+      <if test="v2_rltrjdz != null">
+        v2_rltrjdz = #{v2_rltrjdz,jdbcType=REAL},
+      </if>
+      <if test="v_pjz1 != null">
+        v_pjz1 = #{v_pjz1,jdbcType=REAL},
+      </if>
+      <if test="v_pjz2 != null">
+        v_pjz2 = #{v_pjz2,jdbcType=REAL},
+      </if>
+      <if test="ρT != null">
+        ρT = #{ρT,jdbcType=REAL},
+      </if>
+      <if test="ρsha != null">
+        ρsha = #{ρsha,jdbcType=REAL},
+      </if>
+      <if test="mo != null">
+        mo = #{mo,jdbcType=REAL},
+      </if>
+      <if test="m2_rlthdjsdzzl != null">
+        m2_rlthdjsdzzl = #{m2_rlthdjsdzzl,jdbcType=REAL},
+      </if>
+      <if test="m2_2_rlthdjsdzzl != null">
+        m2_2_rlthdjsdzzl = #{m2_2_rlthdjsdzzl,jdbcType=REAL},
+      </if>
+      <if test="p1_djmddz != null">
+        p1_djmddz = #{p1_djmddz,jdbcType=REAL},
+      </if>
+      <if test="p2_djmddz != null">
+        p2_djmddz = #{p2_djmddz,jdbcType=REAL},
+      </if>
+      <if test="p_pjz1 != null">
+        p_pjz1 = #{p_pjz1,jdbcType=REAL},
+      </if>
+      <if test="p_pjz2 != null">
+        p_pjz2 = #{p_pjz2,jdbcType=REAL},
+      </if>
+      <if test="k != null">
+        k = #{k,jdbcType=REAL},
+      </if>
+      <if test="p4_rlthjzsdzzl != null">
+        p4_rlthjzsdzzl = #{p4_rlthjzsdzzl,jdbcType=REAL},
+      </if>
+      <if test="p4_2_rlthjzsdzzl != null">
+        p4_2_rlthjzsdzzl = #{p4_2_rlthjzsdzzl,jdbcType=REAL},
+      </if>
+      <if test="y1_jzmddz != null">
+        y1_jzmddz = #{y1_jzmddz,jdbcType=REAL},
+      </if>
+      <if test="y2_jzmddz != null">
+        y2_jzmddz = #{y2_jzmddz,jdbcType=REAL},
+      </if>
+      <if test="y_pjz1 != null">
+        y_pjz1 = #{y_pjz1,jdbcType=REAL},
+      </if>
+      <if test="y_pjz2 != null">
+        y_pjz2 = #{y_pjz2,jdbcType=REAL},
+      </if>
+      <if test="t != null">
+        t = #{t,jdbcType=REAL},
+      </if>
+      <if test="fjsm != null">
+        fjsm = #{fjsm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ruoyi.business.christine.domain.CX02">
+    update cx02
+    set time = #{time,jdbcType=TIMESTAMP},
+      position = #{position,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=BIGINT},
+      jcdwmc = #{jcdwmc,jdbcType=VARCHAR},
+      jlbh = #{jlbh,jdbcType=VARCHAR},
+      gcmc = #{gcmc,jdbcType=VARCHAR},
+      htd = #{htd,jdbcType=VARCHAR},
+      sgdw = #{sgdw,jdbcType=VARCHAR},
+      jldw = #{jldw,jdbcType=VARCHAR},
+      gcbw_yt = #{gcbw_yt,jdbcType=VARCHAR},
+      ypxx = #{ypxx,jdbcType=VARCHAR},
+      syjcrq = #{syjcrq,jdbcType=DATE},
+      sytj = #{sytj,jdbcType=VARCHAR},
+      jcyj = #{jcyj,jdbcType=VARCHAR},
+      pdyj = #{pdyj,jdbcType=VARCHAR},
+      zyyqsbmcjbh = #{zyyqsbmcjbh,jdbcType=VARCHAR},
+      qydd = #{qydd,jdbcType=VARCHAR},
+      qyrq = #{qyrq,jdbcType=DATE},
+      dbsl = #{dbsl,jdbcType=REAL},
+      jlcd = #{jlcd,jdbcType=VARCHAR},
+      pzgg = #{pzgg,jdbcType=VARCHAR},
+      m1_rlthblbzzl = #{m1_rlthblbzzl,jdbcType=REAL},
+      m1_2_rlthblbzzl = #{m1_2_rlthblbzzl,jdbcType=REAL},
+      m3_rltblbhszzl = #{m3_rltblbhszzl,jdbcType=REAL},
+      m3_2_rltblbhszzl = #{m3_2_rltblbhszzl,jdbcType=REAL},
+      v1_rltrjdz = #{v1_rltrjdz,jdbcType=REAL},
+      v2_rltrjdz = #{v2_rltrjdz,jdbcType=REAL},
+      v_pjz1 = #{v_pjz1,jdbcType=REAL},
+      v_pjz2 = #{v_pjz2,jdbcType=REAL},
+      ρT = #{ρT,jdbcType=REAL},
+      ρsha = #{ρsha,jdbcType=REAL},
+      mo = #{mo,jdbcType=REAL},
+      m2_rlthdjsdzzl = #{m2_rlthdjsdzzl,jdbcType=REAL},
+      m2_2_rlthdjsdzzl = #{m2_2_rlthdjsdzzl,jdbcType=REAL},
+      p1_djmddz = #{p1_djmddz,jdbcType=REAL},
+      p2_djmddz = #{p2_djmddz,jdbcType=REAL},
+      p_pjz1 = #{p_pjz1,jdbcType=REAL},
+      p_pjz2 = #{p_pjz2,jdbcType=REAL},
+      k = #{k,jdbcType=REAL},
+      p4_rlthjzsdzzl = #{p4_rlthjzsdzzl,jdbcType=REAL},
+      p4_2_rlthjzsdzzl = #{p4_2_rlthjzsdzzl,jdbcType=REAL},
+      y1_jzmddz = #{y1_jzmddz,jdbcType=REAL},
+      y2_jzmddz = #{y2_jzmddz,jdbcType=REAL},
+      y_pjz1 = #{y_pjz1,jdbcType=REAL},
+      y_pjz2 = #{y_pjz2,jdbcType=REAL},
+      t = #{t,jdbcType=REAL},
+      fjsm = #{fjsm,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
