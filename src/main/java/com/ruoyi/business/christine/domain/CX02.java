@@ -83,12 +83,20 @@ public class CX02 {
     @Size(max = 64,message = "字符长度不超过64")
     private String pzgg;
     //容量筒和玻璃板总质量(g)（试验1）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m1_rlthblbzzl;
     //容量筒和玻璃板总质量(g)（试验2）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m1_2_rlthblbzzl;
     //容量筒、玻璃板和水总质量(g)（试验1）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m3_rltblbhszzl;
     //容量筒、玻璃板和水总质量(g)（试验2）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m3_2_rltblbhszzl;
     //容量筒容积单值（ml）（试验1）
     private Float v1_rltrjdz;
@@ -99,14 +107,24 @@ public class CX02 {
     //容量筒容积平均值（ml）（试验1）
     private Float v_pjz2;
     //试验温度T时水的密度
+    @Positive(message = "不能是0")
+    @NotNull(message = "不能为null")
     private Float ρT;
     //砂的表观密度(g/cm3)
+    @Positive(message = "不能是0")
+    @NotNull(message = "不能为null")
     private Float ρsha;
     //容量筒质量(g)
+    @Positive(message = "不能是负数或0")
+    @NotNull(message = "不能为null")
     private Float mo;
     //容量筒和堆积砂的总质量(g)（试验1）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m2_rlthdjsdzzl;
     //容量筒和堆积砂的总质量(g)（试验2）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m2_2_rlthdjsdzzl;
     //堆积密度(g/cm3)单值（试验1）
     private Float p1_djmddz;
@@ -119,8 +137,12 @@ public class CX02 {
     //堆积空隙率（%）
     private Float k;
     //容量筒和紧装砂的总质量(g)（试验1）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m4_rlthjzsdzzl;
     //容量筒和紧装砂的总质量(g)（试验2）
+    @Positive(message = "不能是负数")
+    @NotNull(message = "不能为null")
     private Float m4_2_rlthjzsdzzl;
     //紧装密度(g/cm3)单值（试验1）
     private Float y1_jzmddz;
@@ -133,9 +155,10 @@ public class CX02 {
     //紧装空隙率（%）
     private Float t;
     //附加声明
+    @Size(max = 64,message = "字符长度不超过64")
     private String fjsm;
-
-    public Map<Object, Object> getErrorsMap() {
-        return null;
-    }
+    private Map<String,String>errorsMap=new HashMap<String,String>();
+//    public Map<Object, Object> getErrorsMap() {
+//        return null;
+//    }
 }
