@@ -45,6 +45,7 @@ public class CX02controller {
             return new AjaxResult(HttpStatus.VALID_ERROR,"表单校验失败！", map);
         }
         cx02 = compute(cx02);
+        CX02 tep = cx02;
         if(cx02.getErrorsMap().size()>0){
             return new AjaxResult(HttpStatus.VALID_ERROR, "表单校验失败！", cx02.getErrorsMap());
         }
@@ -56,6 +57,7 @@ public class CX02controller {
     }
 
     private CX02 compute(CX02 cx02){
+        CX02 tmp = cx02;
         if(0.0f == cx02.getPT()){
             cx02.getErrorsMap().put("v1_rltrjdz","ΡT不能为0");
             return cx02;
@@ -64,6 +66,7 @@ public class CX02controller {
             cx02.getErrorsMap().put("Ρsha","Ρsha不能为0");
             return cx02;
         }
+
 
         cx02.setV1_rltrjdz((cx02.getM3_rltblbhszzl()-cx02.getM1_rlthblbzzl())/cx02.getPT());
         cx02.setV2_rltrjdz((cx02.getM3_2_rltblbhszzl()-cx02.getM1_2_rlthblbzzl())/cx02.getPT());
@@ -84,6 +87,10 @@ public class CX02controller {
 
         cx02.setT(((1-cx02.getY1_jzmddz())/ cx02.getPsha())*100);
 
+        if(cx02.getV_pjz1() == null || 0.0f == cx02.getV_pjz1()){
+            cx02.getErrorsMap().put("v_pjz","容量筒和玻璃板总质量不能等于容量筒、玻璃板和水总质量");
+            return cx02;
+        }
         return cx02;
     }
 
