@@ -34,19 +34,21 @@ public class CX02controller {
     }
     @PostMapping("/insert")
     public AjaxResult insert(@Valid @RequestBody CX02 cx02, BindingResult result){
+        CX02 temp = cx02;
         if(result.hasErrors()){
             List<FieldError>errors = result.getFieldErrors();
             Map<String,String> map = new HashMap<String,String>();
             for (FieldError err : errors){
                 String beforeErrorInfo = map.get(err.getField()) == null ? "": map.get(err.getField())+"";
-                map.put(err.getField(),beforeErrorInfo+err.getDefaultMessage());
+                map.put(err.getField(),beforeErrorInfo + err.getDefaultMessage());
             }
-            return new AjaxResult(HttpStatus.VALID_ERROR,"表单校验失败！",map);
+            return new AjaxResult(HttpStatus.VALID_ERROR,"表单校验失败！", map);
         }
         cx02 = compute(cx02);
         if(cx02.getErrorsMap().size()>0){
             return new AjaxResult(HttpStatus.VALID_ERROR, "表单校验失败！", cx02.getErrorsMap());
         }
+
         cx02.setUserid(SecurityUtils.getUserId());
         cx02Mapper.insert(cx02);
         return AjaxResult.success(result.getAllErrors());
@@ -54,17 +56,17 @@ public class CX02controller {
     }
 
     private CX02 compute(CX02 cx02){
-        if(0.0f == cx02.getΡT()){
+        if(0.0f == cx02.getPT()){
             cx02.getErrorsMap().put("v1_rltrjdz","ΡT不能为0");
             return cx02;
         }
-        if(0.0f == cx02.getΡsha()){
+        if(0.0f == cx02.getPsha()){
             cx02.getErrorsMap().put("Ρsha","Ρsha不能为0");
             return cx02;
         }
 
-        cx02.setV1_rltrjdz((cx02.getM3_rltblbhszzl()-cx02.getM1_rlthblbzzl())/cx02.getΡT());
-        cx02.setV2_rltrjdz((cx02.getM3_2_rltblbhszzl()-cx02.getM1_2_rlthblbzzl())/cx02.getΡT());
+        cx02.setV1_rltrjdz((cx02.getM3_rltblbhszzl()-cx02.getM1_rlthblbzzl())/cx02.getPT());
+        cx02.setV2_rltrjdz((cx02.getM3_2_rltblbhszzl()-cx02.getM1_2_rlthblbzzl())/cx02.getPT());
 
         cx02.setV_pjz1((cx02.getV1_rltrjdz()+cx02.getV2_rltrjdz())/2);
 
@@ -73,14 +75,14 @@ public class CX02controller {
 
         cx02.setP_pjz1((cx02.getP1_djmddz()+cx02.getP2_djmddz())/2);
 
-        cx02.setK(((1-cx02.getP_pjz1())/ cx02.getΡsha())*100);
+        cx02.setK(((1-cx02.getP_pjz1())/ cx02.getPsha())*100);
 
         cx02.setY1_jzmddz((cx02.getM4_rlthjzsdzzl()-cx02.getMo())/cx02.getV_pjz1());
         cx02.setY2_jzmddz((cx02.getM4_2_rlthjzsdzzl()-cx02.getMo())/cx02.getV_pjz1());
 
         cx02.setY_pjz1((cx02.getY1_jzmddz()+cx02.getY2_jzmddz())/2);
 
-        cx02.setT(((1-cx02.getY1_jzmddz())/ cx02.getΡsha())*100);
+        cx02.setT(((1-cx02.getY1_jzmddz())/ cx02.getPsha())*100);
 
         return cx02;
     }

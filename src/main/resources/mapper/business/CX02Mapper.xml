@@ -32,8 +32,8 @@
     <result column="v2_rltrjdz" jdbcType="REAL" property="v2_rltrjdz" />
     <result column="v_pjz1" jdbcType="REAL" property="v_pjz1" />
     <result column="v_pjz2" jdbcType="REAL" property="v_pjz2" />
-    <result column="ρT" jdbcType="REAL" property="ρT" />
-    <result column="ρsha" jdbcType="REAL" property="ρsha" />
+    <result column="pT" jdbcType="REAL" property="pT" />
+    <result column="ρsha" jdbcType="REAL" property="psha" />
     <result column="mo" jdbcType="REAL" property="mo" />
     <result column="m2_rlthdjsdzzl" jdbcType="REAL" property="m2_rlthdjsdzzl" />
     <result column="m2_2_rlthdjsdzzl" jdbcType="REAL" property="m2_2_rlthdjsdzzl" />
@@ -42,8 +42,8 @@
     <result column="p_pjz1" jdbcType="REAL" property="p_pjz1" />
     <result column="p_pjz2" jdbcType="REAL" property="p_pjz2" />
     <result column="k" jdbcType="REAL" property="k" />
-    <result column="p4_rlthjzsdzzl" jdbcType="REAL" property="m4_rlthjzsdzzl" />
-    <result column="p4_2_rlthjzsdzzl" jdbcType="REAL" property="m4_2_rlthjzsdzzl" />
+    <result column="m4_rlthjzsdzzl" jdbcType="REAL" property="m4_rlthjzsdzzl" />
+    <result column="m4_2_rlthjzsdzzl" jdbcType="REAL" property="m4_2_rlthjzsdzzl" />
     <result column="y1_jzmddz" jdbcType="REAL" property="y1_jzmddz" />
     <result column="y2_jzmddz" jdbcType="REAL" property="y2_jzmddz" />
     <result column="y_pjz1" jdbcType="REAL" property="y_pjz1" />
@@ -54,9 +54,9 @@
   <sql id="Base_Column_List">
     id, time, position, userid, jcdwmc, jlbh, gcmc, htd, sgdw, jldw, gcbw_yt, ypxx, syjcrq, 
     sytj, jcyj, pdyj, zyyqsbmcjbh, qydd, qyrq, dbsl, jlcd, pzgg, m1_rlthblbzzl, m1_2_rlthblbzzl, 
-    m3_rltblbhszzl, m3_2_rltblbhszzl, v1_rltrjdz, v2_rltrjdz, v_pjz1, v_pjz2, ρT, ρsha, 
-    mo, m2_rlthdjsdzzl, m2_2_rlthdjsdzzl, p1_djmddz, p2_djmddz, p_pjz1, p_pjz2, k, p4_rlthjzsdzzl, 
-    p4_2_rlthjzsdzzl, y1_jzmddz, y2_jzmddz, y_pjz1, y_pjz2, t, fjsm
+    m3_rltblbhszzl, m3_2_rltblbhszzl, v1_rltrjdz, v2_rltrjdz, v_pjz1, v_pjz2, pT, psha,
+    mo, m2_rlthdjsdzzl, m2_2_rlthdjsdzzl, p1_djmddz, p2_djmddz, p_pjz1, p_pjz2, k, m4_rlthjzsdzzl,
+    m4_2_rlthjzsdzzl, y1_jzmddz, y2_jzmddz, y_pjz1, y_pjz2, t, fjsm
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -136,10 +136,10 @@
       pzgg, m1_rlthblbzzl, m1_2_rlthblbzzl, 
       m3_rltblbhszzl, m3_2_rltblbhszzl, v1_rltrjdz, 
       v2_rltrjdz, v_pjz1, v_pjz2, 
-      ρT, ρsha, mo, m2_rlthdjsdzzl, 
+      pT, psha, mo, m2_rlthdjsdzzl,
       m2_2_rlthdjsdzzl, p1_djmddz, p2_djmddz, 
-      p_pjz1, p_pjz2, k, p4_rlthjzsdzzl, 
-      p4_2_rlthjzsdzzl, y1_jzmddz, y2_jzmddz, 
+      p_pjz1, p_pjz2, k, m4_rlthjzsdzzl,
+      m4_2_rlthjzsdzzl, y1_jzmddz, y2_jzmddz,
       y_pjz1, y_pjz2, t, fjsm
       )
     values (#{id,jdbcType=BIGINT}, #{time,jdbcType=TIMESTAMP}, #{position,jdbcType=VARCHAR}, 
@@ -151,10 +151,10 @@
       #{pzgg,jdbcType=VARCHAR}, #{m1_rlthblbzzl,jdbcType=REAL}, #{m1_2_rlthblbzzl,jdbcType=REAL}, 
       #{m3_rltblbhszzl,jdbcType=REAL}, #{m3_2_rltblbhszzl,jdbcType=REAL}, #{v1_rltrjdz,jdbcType=REAL}, 
       #{v2_rltrjdz,jdbcType=REAL}, #{v_pjz1,jdbcType=REAL}, #{v_pjz2,jdbcType=REAL}, 
-      #{ρT,jdbcType=REAL}, #{ρsha,jdbcType=REAL}, #{mo,jdbcType=REAL}, #{m2_rlthdjsdzzl,jdbcType=REAL}, 
+      #{pT,jdbcType=REAL}, #{psha,jdbcType=REAL}, #{mo,jdbcType=REAL}, #{m2_rlthdjsdzzl,jdbcType=REAL},
       #{m2_2_rlthdjsdzzl,jdbcType=REAL}, #{p1_djmddz,jdbcType=REAL}, #{p2_djmddz,jdbcType=REAL}, 
-      #{p_pjz1,jdbcType=REAL}, #{p_pjz2,jdbcType=REAL}, #{k,jdbcType=REAL}, #{p4_rlthjzsdzzl,jdbcType=REAL}, 
-      #{p4_2_rlthjzsdzzl,jdbcType=REAL}, #{y1_jzmddz,jdbcType=REAL}, #{y2_jzmddz,jdbcType=REAL}, 
+      #{p_pjz1,jdbcType=REAL}, #{p_pjz2,jdbcType=REAL}, #{k,jdbcType=REAL}, #{m4_rlthjzsdzzl,jdbcType=REAL},
+      #{m4_2_rlthjzsdzzl,jdbcType=REAL}, #{y1_jzmddz,jdbcType=REAL}, #{y2_jzmddz,jdbcType=REAL},
       #{y_pjz1,jdbcType=REAL}, #{y_pjz2,jdbcType=REAL}, #{t,jdbcType=REAL}, #{fjsm,jdbcType=VARCHAR}
       )
   </insert>
@@ -251,11 +251,11 @@
       <if test="v_pjz2 != null">
         v_pjz2,
       </if>
-      <if test="ρT != null">
-        ρT,
+      <if test="pT != null">
+        pT,
       </if>
-      <if test="ρsha != null">
-        ρsha,
+      <if test="psha != null">
+        psha,
       </if>
       <if test="mo != null">
         mo,
@@ -281,11 +281,11 @@
       <if test="k != null">
         k,
       </if>
-      <if test="p4_rlthjzsdzzl != null">
-        p4_rlthjzsdzzl,
+      <if test="m4_rlthjzsdzzl != null">
+        m4_rlthjzsdzzl,
       </if>
-      <if test="p4_2_rlthjzsdzzl != null">
-        p4_2_rlthjzsdzzl,
+      <if test="m4_2_rlthjzsdzzl != null">
+        m4_2_rlthjzsdzzl,
       </if>
       <if test="y1_jzmddz != null">
         y1_jzmddz,
@@ -397,11 +397,11 @@
       <if test="v_pjz2 != null">
         #{v_pjz2,jdbcType=REAL},
       </if>
-      <if test="ρT != null">
-        #{ρT,jdbcType=REAL},
+      <if test="pT != null">
+        #{pT,jdbcType=REAL},
       </if>
-      <if test="ρsha != null">
-        #{ρsha,jdbcType=REAL},
+      <if test="psha != null">
+        #{psha,jdbcType=REAL},
       </if>
       <if test="mo != null">
         #{mo,jdbcType=REAL},
@@ -427,11 +427,11 @@
       <if test="k != null">
         #{k,jdbcType=REAL},
       </if>
-      <if test="p4_rlthjzsdzzl != null">
-        #{p4_rlthjzsdzzl,jdbcType=REAL},
+      <if test="m4_rlthjzsdzzl != null">
+        #{m4_rlthjzsdzzl,jdbcType=REAL},
       </if>
-      <if test="p4_2_rlthjzsdzzl != null">
-        #{p4_2_rlthjzsdzzl,jdbcType=REAL},
+      <if test="m4_2_rlthjzsdzzl != null">
+        #{m4_2_rlthjzsdzzl,jdbcType=REAL},
       </if>
       <if test="y1_jzmddz != null">
         #{y1_jzmddz,jdbcType=REAL},
@@ -543,11 +543,11 @@
       <if test="v_pjz2 != null">
         v_pjz2 = #{v_pjz2,jdbcType=REAL},
       </if>
-      <if test="ρT != null">
-        ρT = #{ρT,jdbcType=REAL},
+      <if test="pT != null">
+        pT = #{pT,jdbcType=REAL},
       </if>
-      <if test="ρsha != null">
-        ρsha = #{ρsha,jdbcType=REAL},
+      <if test="psha != null">
+        psha = #{psha,jdbcType=REAL},
       </if>
       <if test="mo != null">
         mo = #{mo,jdbcType=REAL},
@@ -573,11 +573,11 @@
       <if test="k != null">
         k = #{k,jdbcType=REAL},
       </if>
-      <if test="p4_rlthjzsdzzl != null">
-        p4_rlthjzsdzzl = #{p4_rlthjzsdzzl,jdbcType=REAL},
+      <if test="m4_rlthjzsdzzl != null">
+        m4_rlthjzsdzzl = #{m4_rlthjzsdzzl,jdbcType=REAL},
       </if>
-      <if test="p4_2_rlthjzsdzzl != null">
-        p4_2_rlthjzsdzzl = #{p4_2_rlthjzsdzzl,jdbcType=REAL},
+      <if test="m4_2_rlthjzsdzzl != null">
+        m4_2_rlthjzsdzzl = #{m4_2_rlthjzsdzzl,jdbcType=REAL},
       </if>
       <if test="y1_jzmddz != null">
         y1_jzmddz = #{y1_jzmddz,jdbcType=REAL},
@@ -631,8 +631,8 @@
       v2_rltrjdz = #{v2_rltrjdz,jdbcType=REAL},
       v_pjz1 = #{v_pjz1,jdbcType=REAL},
       v_pjz2 = #{v_pjz2,jdbcType=REAL},
-      ρT = #{ρT,jdbcType=REAL},
-      ρsha = #{ρsha,jdbcType=REAL},
+      pT = #{pT,jdbcType=REAL},
+      psha = #{psha,jdbcType=REAL},
       mo = #{mo,jdbcType=REAL},
       m2_rlthdjsdzzl = #{m2_rlthdjsdzzl,jdbcType=REAL},
       m2_2_rlthdjsdzzl = #{m2_2_rlthdjsdzzl,jdbcType=REAL},
@@ -641,8 +641,8 @@
       p_pjz1 = #{p_pjz1,jdbcType=REAL},
       p_pjz2 = #{p_pjz2,jdbcType=REAL},
       k = #{k,jdbcType=REAL},
-      p4_rlthjzsdzzl = #{p4_rlthjzsdzzl,jdbcType=REAL},
-      p4_2_rlthjzsdzzl = #{p4_2_rlthjzsdzzl,jdbcType=REAL},
+      m4_rlthjzsdzzl = #{m4_rlthjzsdzzl,jdbcType=REAL},
+      m4_2_rlthjzsdzzl = #{m4_2_rlthjzsdzzl,jdbcType=REAL},
       y1_jzmddz = #{y1_jzmddz,jdbcType=REAL},
       y2_jzmddz = #{y2_jzmddz,jdbcType=REAL},
       y_pjz1 = #{y_pjz1,jdbcType=REAL},

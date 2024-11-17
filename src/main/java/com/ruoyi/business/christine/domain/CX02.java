@@ -109,11 +109,11 @@ public class CX02 {
     //试验温度T时水的密度
     @Positive(message = "不能是0")
     @NotNull(message = "不能为null")
-    private Float ρT;
+    private Float pT;
     //砂的表观密度(g/cm3)
     @Positive(message = "不能是0")
     @NotNull(message = "不能为null")
-    private Float ρsha;
+    private Float psha;
     //容量筒质量(g)
     @Positive(message = "不能是负数或0")
     @NotNull(message = "不能为null")

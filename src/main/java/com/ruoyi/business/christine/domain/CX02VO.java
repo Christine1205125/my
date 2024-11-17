@@ -67,9 +67,9 @@ public class CX02VO {
     //容量筒容积平均值（ml）（试验1）
     private Float v_pjz2;
     //试验温度T时水的密度
-    private Float ρT;
+    private Float pT;
     //砂的表观密度(g/cm3)
-    private Float ρsha;
+    private Float psha;
     //容量筒质量(g)
     private Float mo;
     //容量筒和堆积砂的总质量(g)（试验1）
